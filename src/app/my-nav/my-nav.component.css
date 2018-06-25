@@ -1,0 +1,19 @@
+
+.sidenav-container {
+  height: 100%;
+}
+.mat-sidenav-content{
+  background: white;
+}
+.sidenav {
+  width: 200px;
+  box-shadow: 3px 0 6px rgba(0,0,0,.24);
+}
+.example-button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.button-row{
+  margin-left: auto;
+}
