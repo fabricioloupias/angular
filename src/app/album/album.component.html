@@ -1,0 +1,55 @@
+<div class="container">
+  <h2>Subir foto</h2>
+  <div class="row justify-content-center align-items-center">
+    <div class="col-8">
+      <div class="row">
+        <div class="col-md-12">
+          <button class="d-block" mat-raised-button color="primary" (click)="fileInput.click()">Nueva foto</button>
+          <input class="d-none" #fileInput name="image" type="file" multiple ng2FileSelect [uploader]="uploader">
+        </div>
+        <div class="col-md-12">
+          <div class="row align-items-center my-5" *ngFor="let item of uploader.queue">
+            <div class="col-md-6">
+              <p>{{item.file.name}}</p>
+            </div>
+            <div class="col-md-4">
+              <mat-progress-bar class="example-margin" [color]="color" [mode]="mode" [value]="value" [bufferValue]="bufferValue">
+              </mat-progress-bar>
+            </div>
+            <div class="col-md-1 text-right">
+                <button mat-mini-fab (click)="item.upload()" color="blue">
+                  <mat-icon>cloud_upload</mat-icon>
+                </button>
+              </div>
+            <div class="col-md-1 text-right">
+              <button mat-mini-fab (click)="item.remove()" color="warn">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12" *ngIf="uploader?.queue?.lenght > 0">
+          <button class="d-block" type="button" mat-raised-button (click)="uploader.uploadAll()" color="white">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center align-items-start my-5">
+    <div class="col-md-8">
+      <div class="row" *ngFor="let item of attachmentList">
+        <div class="col-md-6">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <mat-card-title>{{item.originalname}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-actions>
+              <button mat-button>LIKE</button>
+              <button mat-button>SHARE</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
