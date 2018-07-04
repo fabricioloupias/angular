@@ -11,12 +11,14 @@ const URI = 'http://localhost:3000/api/uploads/image';
 })
 export class AlbumComponent {
 
-  uploader: FileUploader = new FileUploader({url: URI});
+  uploader: FileUploader = new FileUploader({url: URI, itemAlias: 'image'});
   attachmentList:any = [];
   
   constructor() { 
+    this.uploader.onAfterAddingFile = (file)=> { file.withCredentials = false; };
     this.uploader.onCompleteItem = (item:any, response:any, status:any, headers:any) => {
-      this.attachmentList.push(JSON.parse(response));
+      this.attachmentList.push(JSON.parse(response)); 
+      console.log("Upload correctamente", item, status, response); 
     }
   }
 
@@ -25,7 +27,7 @@ export class AlbumComponent {
   }
 
   uploadImage(){
-    console.log(this.attachmentList)
+    
   }
 
 }
